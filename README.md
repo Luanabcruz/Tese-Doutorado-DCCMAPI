@@ -1,0 +1,2 @@
+# Tese-Doutorado-DCCMAPI
+Tese de autoria de Luana Batista da Cruz, sob o título “Segmentação automática de rins e tumores renais em imagens de tomografia computadorizada baseada em aprendizado profundo 2.5D”, apresentada ao Curso de Doutorado em Ciência da Computação - Associação UFMA/UFPI, como parte dos requisitos para obtenção do título de Doutora em Ciência da Computação, aprovada em 20/05/2022
