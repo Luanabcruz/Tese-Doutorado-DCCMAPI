@@ -1,0 +1,84 @@
+\chapter{Conclusão}
+\label{cap:conclusao}
+\phantom{2}
+
+As altas taxas de incidência do câncer de rim em todo o mundo mostram a importância do desenvolvimento de pesquisas que forneçam suporte ao diagnóstico precoce da doença. Essa é uma etapa fundamental para viabilizar o tratamento adequado aos pacientes. Nesse contexto, este trabalho apresentou um método automático para a tarefa de segmentação de rins e tumores renais baseado em aprendizado profundo e técnicas de processamento de imagens para reduzir os falsos positivos.
+
+O método proposto apresenta quatro etapas principais. Na primeira etapa, utiliza técnicas de processamento de imagens, como realce da imagem e normalização das intensidades do \textit{voxel}. Além de aplicar técnicas para agrupar tumores renais a fim de distribuir proporcionalmente o conjunto de treinamento e validação. Na segunda etapa, as segmentações iniciais de rins e tumores são obtidas usando ResUNet 2.5D e DeepLabv3+ 2.5D, respectivamente. Na terceira etapa, a reconstrução dos tumores renais usa outro modelo ResUNet 2.5D. Finalmente, na quarta etapa, as segmentações finais dos rins e tumores renais são obtidas por meio do pós-processamento para remoção de elementos que não fazem parte dos rins e tumores.
+
+Para validar o método proposto, foi usada a base de imagem pública KiTS19. Essa base de imagens consiste em tomografias de pacientes em diferentes estágios da doença, tornando-a altamente heterogênea e complexa. Dessa forma, a segmentação dos rins e tumores é uma tarefa desafiadora em cenários realistas. Os resultados experimentais revelaram um desempenho promissor para a tarefa proposta, atingindo 97,47\% de Dice, 95,09\% de Jaccard, 99,95\% de acurácia, 97,86\% de sensibilidade e 99,97\% de especificidade para segmentação de rins. Para a segmentação de tumores foi obtido 82,94\% de Dice, 72,54\% de Jaccard, 99,95\% de acurácia, 86,51\% de sensibilidade e 99,96\% de especificidade. De maneira geral, os resultados fornecem fortes evidências de que o método proposto é uma ferramenta poderosa que pode ser incorporada aos sistemas CAD para auxiliar no diagnóstico da doença.
+
+\section{Contribuições}
+\label{sec:contribuições}
+
+As principais contribuições do método proposto nesta tese são descritas a seguir:
+
+\begin{enumerate}
+    \item Desenvolvimento de um método automático para agrupar casos (exames) e distribuí-los proporcionalmente no conjunto de treinamento e validação para garantir que os modelos fossem equilibrados e obtivessem melhor desempenho;
+    
+    \item Adaptação da arquitetura DeepLabv3+, com o uso da DPN-31 como codificador para a segmentação de tumores renais, fornecendo resultados precisos;
+    
+    \item Aplicação da técnica de balanceamento de fatias nos conjuntos de treinamento e validação juntamente com a abordagem 2.5D, contribuindo para reduzir consideravelmente os falsos positivos e detectando se uma fatia apresenta rins/tumores ou não;
+    
+    \item A aplicação da etapa de reconstrução de tumores renais por meio da combinação de duas CNNs recuperou partes consideráveis de regiões de tumores e, consequentemente, proporcionou melhores resultados de segmentação renal;
+    
+    \item Aplicação de técnicas de processamento de imagens baseadas em informações contextuais para reduzir falsos positivos em segmentações de rins e tumores.
+\end{enumerate}
+
+\section{Trabalhos Futuros}
+\label{sec:trabalhos-futuros}
+
+Apesar dos bons resultados obtidos para a segmentação de rins e tumores renais em imagens de TCs, melhorias ainda podem ser feitas no método proposto visando incrementar a sua eficiência. A seguir são destacadas algumas sugestões:
+
+\begin{enumerate}
+    \item Considerando a diversidade de aquisições da base de imagens, padronizar as entradas da rede usando uma rede \textit{autoencoder} como um pré-processamento poderia aumentar a eficiência dos modelos de segmentação;
+    
+    \item Assim como na abordagem 2.5D usada no método proposto, as fatias são visualizadas sequencialmente. Acredita-se que o uso de recursos recorrentes da rede neural pode melhorar o desempenho, pois essas redes podem “lembrar” informações de fatias anteriores, adicionando recursos ao modelo;
+    
+    \item Aprimorar ou construir um \textit{ensemble} na etapa de reconstrução dos tumores renais a fim de melhorar a sensibilidade;
+    
+    \item Construir um método para fazer uma triagem de TCs com e sem tumores renais. Este novo método seria integrado ao método proposto como uma etapa inicial para identificar quais TCs têm tumores renais. Posteriormente, TCs com tumores seriam usadas como entrada para segmentar as regiões com tumores.
+    
+    %\item Outra técnica de pós-processamento, como o fechamento morfológico, poderia ser incrementada para aumentar os objetos segmentados e recuperar mais regiões de rins e tumores renais, e assim melhorar os resultados obtidos;
+\end{enumerate}
+
+\section{Produções Científicas}
+\label{sec:producoes-cientificas}
+
+A Tabela~\ref{tab:artigos-autoria} apresenta os artigos diretamente relacionados ao método proposto para a segmentação de rins e tumores renais em imagens de TC. Além disso, a Tabela~\ref{tab:artigos-coautoria} lista os artigos científicos publicados e submetidos em outras aplicações de processamento de imagens e visão computacional desde o início do doutorado.
+
+\begin{table}[ht!]
+\centering
+\caption{Produções científicas em relação ao método proposto para segmentação de rins e tumores renais.}
+\label{tab:artigos-autoria}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{p{10cm}lccc}
+\hline
+\textbf{Artigo}                                                                                                                         & \centering \textbf{Tipo} & \textbf{Qualis} & \textbf{Status} \\ \hline
+Kidney Segmentation from Computed Tomography Images using Deep Neural Network. Em: Computers in Biology and Medicine. Ano: 2020.        & Periódico     & A1              & Publicado       \\ \hline
+Kidney Tumor Segmentation from Computed Tomography Images using DeepLabv3+ 2.5D Model. Em: Expert Systems with Applications. Ano: 2021. & Periódico     & A1              & Publicado      \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\caption{Produções científicas em outras aplicações de processamento de imagens e visão computacional.}
+\label{tab:artigos-coautoria}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{p{11cm}lccc}
+\hline
+\textbf{Artigo}                                                                                                                                                                            & \textbf{Tipo} & \textbf{Qualis} & \textbf{Status} \\ \hline
+Interferometer Eye Image Classification for Dry Eye Categorization using Phylogenetic Diversity Indexes for Texture Analysis. Em: Computer Methods and Programs in Biomedicine. Ano: 2019. & Periódico     & A1              & Publicado       \\ \hline
+Tear Film Classification in Interferometry Eye Images using Phylogenetic Diversity Indexes and Ripley's K Function. Em: IEEE Journal of Biomedical and Health Informatics. Ano: 2020.      & Periódico     & A1              & Publicado       \\ \hline
+Planejamento Cirúrgico de Estrabismo Horizontal Utilizando Árvore de Regressão de Múltiplas Saídas. Em: Simpósio Brasileiro de Computação Aplicada à Saúde. Ano: 2020.                     & Simpósio      & B3              & Publicado       \\ \hline
+An Automatic Method for Segmentation of Liver Lesions in Computed Tomography Images Using Deep Neural Networks. Em: Expert Systems with Applications. Ano: 2021.                           & Periódico     & A1              & Publicado       \\ \hline
+Surgical Planning of Horizontal Strabismus Using Multiple Output Regression Tree. Em: Computers in Biology and Medicine. Ano: 2021.                                                        & Periódico     & A1              & Publicado       \\ \hline
+Automatic Method for Classifying COVID-19 Patients Based on Chest X-ray Images, using Deep Features and PSO-optimized XGBoost. Em: Expert Systems with Applications. Ano: 2021.            & Periódico     & A1              & Publicado       \\ \hline
+Segmentation and Quantification of COVID-19 Infections in CT using Pulmonary Vessels Extraction and Deep Learning. Em: Multimedia Tools and Applications. Ano: 2021.                       & Periódico     & A2              & Publicado       \\ \hline
+Classificação Automática de Glóbulos Brancos usando Descritores de Forma e Textura e eXtreme Gradient Boosting. Em: Simpósio Brasileiro de Computação Aplicada à Saúde. Ano: 2020.         & Simpósio      & B3              & Publicado       \\ \hline
+Liver Segmentation from Computed Tomography Images using Cascade Deep Learning. Em: Computers in Biology and Medicine. Ano: 2021.                                                           & Periódico     & A1              & Publicado       \\ \hline
+Heart Segmentation in Planning CT using 2.5D U-Net++ with Attention Gate. Em: Computer Methods in Biomechanics and Biomedical Engineering: Imaging \& Visualization. Ano: 2021.            & Periódico     & A3              & Publicado       \\ \hline
+\end{tabular}
+}
+\end{table}

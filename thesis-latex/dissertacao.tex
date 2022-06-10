@@ -1,0 +1,688 @@
+\RequirePackage{setspace}
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+\linespread{4}	
+% ---
+% Pacotes básicos 
+% ---
+
+
+\usepackage[alf,abnt-etal-cite=3,abnt-etal-list=0]{abntex2cite}
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}			% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% Para melhorias de justificação
+\usepackage{todonotes}			% Notas para a revisão
+\usepackage{enumitem}
+\usepackage{textcase}
+\usepackage{soul}
+\usepackage{soulutf8}
+
+% graficos em 2 colunas
+\usepackage{graphicx, multicol}
+%equações com aligned
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{setspace} 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,chains,positioning}
+\DeclareMathOperator{\atantwo}{atan2}
+\DeclareMathOperator{\arctantwo}{arctan2}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{color, colortbl}
+%\usepackage[table]{xcolor}
+\definecolor{lightgray}{gray}{0.9}
+\usepackage{placeins}
+\usepackage{array}
+
+% – inicio codigo fonte 
+\usepackage{listings}
+\usepackage{xcolor}
+\renewcommand{\lstlistingname}{Código-fonte}% Listing -> Códigos
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% Lista de Códigos
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+% – fim codigo fonte
+
+\usepackage{booktabs}
+
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+
+\usepackage{nomencl}
+
+\usepackage{setspace}
+\usepackage{printlen}
+\usepackage[final]{pdfpages}
+
+\makeindex
+\makenomenclature
+
+%\DisemulatePackage{setspace}
+\usepackage{setspace}
+
+
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+
+\usepackage{customizacao}
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+%  \usepackage{pslatex}
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+% \usepackage{txfonts}
+% \renewcommand{\familydefault}{\rmdefault}
+\renewcommand{\ABNTEXchapterfont}{\bfseries \rmfamily}
+%\renewcommand{\ABNTEXchapterfont}{\bfseries \sffamily}
+%\renewcommand{\ABNTEXchapterfont}{\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXpartfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\setlength\afterchapskip{\lineskip}
+\setlength\beforechapskip{\lineskip}
+
+% % ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+% \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% % Texto padrão antes do número das páginas
+% \renewcommand{\backref}{}
+% % Define os textos da citação
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		Nenhuma citação no texto.%
+% 	\or
+% 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+% 	\fi}
+	
+%  ---
+\newcommand*\elide{\textup{[\,\ldots] }}
+
+%%criar um novo estilo de cabeçalhos e rodapés
+\makepagestyle{meuestilo}
+  %%cabeçalhos
+  \makeevenhead{meuestilo} %%pagina par
+     {}
+     {}
+     {\normalsize\thepage}
+  \makeoddhead{meuestilo} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {\normalsize\thepage}
+  %\makeheadrule{meuestilo}{\textwidth}{\normalrulethickness} %linha
+  %% rodapé
+  \makeevenfoot{meuestilo}
+     {}
+     {}
+     {} 
+  \makeoddfoot{meuestilo} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {}
+
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+
+\titulo{Segmentação automática de rins e tumores renais em imagens de tomografia computadorizada baseada em aprendizado profundo 2.5D}
+%\titulo{Segmentação automática de rins e tumores renais em imagens de tomografia computadorizada usando os modelos Dual Path DeepLabv3+ e ResUNet baseados em abordagem 2.5D}
+\autor{LUANA BATISTA DA CRUZ}
+\local{SÃO LUÍS - MA}
+\data{2022}
+\orientador[Orientador:]{Prof. Dr. Aristófanes Corrêa Silva}
+\coorientador[Coorientador:]{Prof. Dr. João Dallyson Sousa de Almeida}
+
+
+\instituicao{%
+  UNIVERSIDADE FEDERAL DO MARANHÃO - UFMA
+  \par
+  CENTRO DE CIÊNCIAS EXATAS E TECNOLOGIA
+  \par
+  DOUTORADO EM CIÊNCIA DA COMPUTAÇÃO - ASSOCIAÇÃO UFMA/UFPI}
+\tipotrabalho{Tese de Doutorado}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Tese apresentada ao Curso de Doutorado em Ciência da Computação - Associação UFMA/UFPI como parte dos requisitos necessários para obtenção do grau de Doutora em Ciência da Computação.
+\newline \newline
+%Área de concentração: Ciência da Computação.
+}
+%\preambulo{Versão preliminar de Dissertação de Mestrado apresentada ao Programa de Pós-Graduação em Políticas Públicas para exame de qualificação.}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	pdfcreator={PDFLaTeX},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico; dissertação; mestrado}, 
+	colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      		% color of file links
+	urlcolor=black,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.5cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+%\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+%\setlength{\parskip}{\onelineskip}  % tente também \onelineskip
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+\renewenvironment{quote}%
+  {\list{}{\singlespacing\small\leftmargin=4cm\rightmargin=0in\parskip=-0.2cm}\item[]{\parskip=0cm}}%
+  {\endlist}
+
+%\renewenvironment{quote}
+%               {\list{}{\leftmargin=4cm\rightmargin=0in}%
+%                \item\relax\small\textquotedblleft\ignorespaces}
+%               {\unskip\unskip\textquotedblright\endlist}
+               
+
+%\renewenvironment{quote}{\list{}{\small \leftmargin=4cm \rightmargin=0cm}\item[]}{\endlist}  
+%\renewenvironment{quote}{\begin{quotation}}{\end{quotation}}  
+
+%\linespread{1.25}
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+%\renewcommand{\baselinestretch}{1}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+%\OnehalfSpacing
+\spacing{1.5}
+\citeoption{abnt-emphasize=bf}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+%\begin{capa}
+%	\includepdf{CapaDissertacao.pdf}
+%\end{capa}
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+
+%******************FICHA CATALOGRÁFICA***********************
+%\begin{fichacatalografica}
+%     \includepdf{ficha_catalografica_2016101732.pdf}
+%\end{fichacatalografica}
+
+\begin{comment}
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\setlength\unitlength{1cm}
+	\framebox(13.5,8){(Ficha catalográfica)}
+	%\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	%\small
+	%\imprimirautor
+	%Sobrenome, Nome do autor
+	
+	%\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	%\imprimirlocal, \imprimirdata-
+	
+%	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	%\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	%\hspace{0.5cm}
+	%\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	%\imprimirdata.}\\
+	
+	%\hspace{0.5cm}
+	%	1. Educação.
+	%	2. EJA.
+	%	3. IFMA.
+	%	I. Orientador.
+	%	II. UFMA.
+	%	III. PPGPP.
+	%	IV. Título 			
+	%\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+% ---
+\end{comment}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+%\includepdf{FolhaAprovacao.pdf}
+%
+%\begin{comment}
+\begin{folhadeaprovacao}
+
+%   \begin{center}
+%     {\MakeUppercase{\ABNTEXchapterfont\imprimirautor}}
+
+%     \vspace*{\fill}\vspace*{\fill}
+%     \begin{center}
+%       \MakeUppercase{\ABNTEXchapterfont\bfseries\imprimirtitulo}
+%     \end{center}
+%     \vspace*{\fill}
+    
+%     \hspace{.45\textwidth}
+%     \begin{minipage}{.5\textwidth}
+%         \imprimirpreambulo
+%     \end{minipage}%
+%     \vspace*{\fill}
+%   \end{center}
+
+        
+
+
+%    Trabalho aprovado em { } \_\_\_{ } de{  }\_\_\_\_\_\_\_\_\_\_\_\_\_{  }de{  }\_\_\_\_\_\_\_.
+\noindent Tese de autoria de Luana Batista da Cruz, sob o t{\'\i}tulo \textbf{``\imprimirtitulo''}, apresentada ao Curso de Doutorado em Ciência da Computação - Associação UFMA/UFPI, como parte dos requisitos para obtenção do t{\'\i}tulo de Doutora em Ciência da Computação, aprovada em \_\_\_ de \_\_\_\_\_\_\_\_\_\_\_\_\_ de \_\_\_\_\_\_\_ pela comissão julgadora constitu{\'\i}da pelos doutores:   
+
+\vspace*{0.4cm}
+
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador \\ Universidade Federal do Maranhão}
+  \vspace*{0.35cm}
+%   \assinatura{\textbf{\imprimircoorientador} \\ Coorientador}   
+   \assinatura{\textbf{Prof. Dr. João Dallyson Sousa de Almeida} \\ Coorientador \\ Universidade Federal do Maranhão}
+   \vspace*{0.35cm}
+   \assinatura{\textbf{Profa. Dra. Aura Conci} \\ Examinadora Externa \\ Universidade Federal Fluminense}
+  \vspace*{0.35cm}
+  \assinatura{\textbf{Prof. Dr. Leandro Augusto Frata Fernandes} \\ Examinador Externo \\ Universidade Federal Fluminense}
+  \vspace*{0.35cm}
+  \assinatura{\textbf{Prof. Dr. Anselmo Cardoso de Paiva} \\ Examinador Interno \\ Universidade Federal do Maranhão}
+  \vspace*{0.35cm}
+  \assinatura{\textbf{Prof. Dr. Kelson Rômulo Teixeira Aires} \\ Examinador Interno \\ Universidade Federal do Piauí}
+%   \vspace*{0.4cm}
+   %\assinatura{\textbf{Prof. Dr. Alberto Barbosa Raposo } \\ Membro da Banca Examinadora}
+   %\assinatura{\textbf{Prof. Dr. Joaquim Bento Cavalcante Neto} \\ Membro da Banca Examinadora}
+
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+   \begin{center}
+    % \vspace*{1cm}
+    % {\MakeUppercase{\imprimirlocal}}
+    \par
+    % {\MakeUppercase{\imprimirdata}}
+%     \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+%\end{comment}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{\shortstack{Ao meu pai \textit{(in memoriam)} e mãe, irmão, família e amigos.}} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\include{capitulos/agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+% 		\textit{``Se não puder voar, corra. Se não puder correr, ande.\\
+% 			  Se não puder andar, rasteje, mas continue em frente de qualquer jeito.''\\
+% 			  (M. Luther King)}
+		\textit{“Confia ao SENHOR as tuas obras, e os teus desígnios serão estabelecidos.”\\}
+			  \textbf{Provérbios 16:3.}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+
+\include{capitulos/resumo}
+
+% resumo em inglês
+\include{capitulos/abstract}
+
+
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---	
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+    \item[3D-MS-RFCNN] \textit{Multi-Scale Residual Fully Convolutional Neural Network}
+    \item[Acc] Acurácia
+    \item[ASPP] \textit{Atrous Spatial Pyramid Pooling}
+    \item[CAD] \textit{Computer Aided Diagnosis}
+    \item[CADx] \textit{Computer Aided Detection}
+    \item[CNN] \textit{Convolutional Neural Network}
+    \item[DenseNet] \textit{Densely Convolutional Network}
+    \item[DNA] \textit{Deoxyribonucleic Acid}
+    \item[DPN] \textit{Dual Path Network}
+    \item[DRLSE] \textit{Distance Regularized Level-Sets Evolution}
+    \item[Esp] Especificidade
+    \item[FCN] \textit{Fully Convolutional Network}
+    \item[FN] Falso Negativo
+    \item[FP] Falso Positivo
+    \item[FSGAN] \textit{Feature Sharing Generative Adversarial Network}
+    \item[GPU] \textit{Graphics Processing Unit}
+    \item[HU] \textit{Hounsfield Units}
+    \item[IA] Inteligência Artificial
+    \item[IoU] \textit{Intersection over Union}
+    \item[Jacc] Jaccard
+    \item[MB-FSGAN] \textit{Multi-Branch Feature Sharing Generative Adversarial Network}
+    \item[MLP] \textit{Multilayer Perceptron}
+    \item[MSFE] \textit{Multi-Scale Feature Extractor}
+    \item[MSS] \textit{Multi-Scale Supervised}
+    \item[NMF] \textit{Nonnegative Matrix Factorization}
+    \item[PPM] \textit{Pyramid Pooling Module}
+    \item[ReLU] \textit{Rectified Linear Units}
+    \item[ResNet] \textit{Residual Network}
+    \item[RM] Ressonância Magnética
+    \item[RNAs] Redes Neurais Artificiais
+    \item[SE] \textit{Squeeze-and-Excitation}
+    \item[Sen] Sensibilidade
+    \item[SERU] SE-ResNeXT U-Net
+    \item[SIFCM] \textit{Spatial Intuitionistic Fuzzy C-Means Clustering}
+    \item[SSCNs] \textit{Submanifold Sparse Convolutional Networks}
+    \item[SSN] \textit{Sparse Segmentation Network}
+    \item[TC] Tomografia Computadorizada
+    \item[TPE] \textit{Tree of Parzen Estimators}
+    \item[VN] Verdadeiro Negativo
+    \item[VP] Verdadeiro Positivo
+    \item[VTP] \textit{Voxel-to-Point}
+\end{siglas}
+
+% listagem de publicações relacionadas ao trabalho
+%\begin{publicacoes}
+%  \noindent \normalsize \textbf{Artigos publicados}
+%  \begin{table}[!ht]
+%	\centering		    
+%	\begin{tabular}{|p{4.0cm}|p{11.0cm}|}
+%	\hline\noalign{\smallskip}    
+%	\hline    
+%	\textbf{Local} & \textbf{Publicação}\\
+%	\hline
+%	\footnotesize Lecture Notes in Computer Science (Capítulo de livro; Qualis C; Área: Computação) & \footnotesize dos Reis P.R.J., Junior D.L.G., de Araújo A.S., Júnior G.B., Silva A.C., de Paiva A.C. (2014) Visualization of Power Systems Based on Panoramic Augmented Environments. In: De Paolis L., Mongelli A. (eds) Augmented and Virtual Reality. AVR 2014. Lecture Notes in Computer Science, vol 8853. Springer, Cham  \\ \hline		
+%	\footnotesize Simpósio Brasileiro de Sistemas Elétricos (Simpósio nacional) & \footnotesize Gomes Jr, D. L.; Reis, P. R. J.; Paiva, A. C.; Silva, A. C.; Araújo, A. S. \textbf{Detecção de transformadores em imagens de Subestações Elétricas com SURF e KNN}. In: V Simpósio Brasileiro de Sistemas Elétricos - SBSE2014, 2014, Foz do Iguaçu - PR. V Simpósio Brasileiro de Sistemas Elétricos - SBSE2014, 2014. \\ \hline		
+%	\footnotesize International Journal of Computers, Communications \& Control (Periódico; Qualis B1; Área: Engenharias IV) & \footnotesize Gomes Jr, Daniel Lima; Reis, Paulo Roberto Jansen dos; Paiva, Anselmo Cardoso de; Silva, Aristófanes Corrêa; Braz Jr, Geraldo; Gattass, Marcelo; Araújo, Antônio Sérgio de. \textbf{An Approach for Construction of Augmented Reality Systems using Natural Markers and Mobile Sensors in Industrial Fields}. International Journal of Computers Communications \& Control, v. 12, p. 507-518, 2017. \\ \hline	
+%	\end{tabular}	
+%  \end{table}
+  
+%  \noindent \normalsize \textbf{Em processo de revisão}
+%  \begin{table}[!ht]
+%	\centering		    
+%	\begin{tabular}{|p{4.0cm}|p{11.0cm}|}
+%	\hline\noalign{\smallskip}    
+%	\hline    
+%	\textbf{Local} & \textbf{Artigo submetido}\\
+%	\hline	
+%	\footnotesize Advances in Engineering Software (Periódico; Qualis A2; Área: Computação) & \footnotesize Gomes Jr, Daniel Lima; Reis, Paulo Roberto Jansen dos; Paiva, Anselmo Cardoso de; Silva, Aristófanes Corrêa; Braz Jr, Geraldo; Araújo, Antônio Sérgio de; Gattass, Marcelo. \textbf{Semi-automatic methodology for augmented panorama development in industrial outdoor environments}. Advances in Engineering Software (Elsevier Journal). Em revisão. \\ \hline	
+%	\footnotesize Computers in Industry (Periódico; Qualis A2; Área: Computação) & \footnotesize Gomes Jr, Daniel Lima; Reis, Anselmo Cardoso de; Silva, Aristófanes Corrêa; Braz Jr, Geraldo; Almeida, João Dallyson Sousa de; Araújo, Antônio Sérgio de; Gattass, Marcelo. \textbf{Augmented Visualization Using Homomorphic Filtering and Haar-based Natural Markers for Power Systems Substations}. Computers in Industry (Elsevier Journal). Em revisão. \\ \hline	
+%	\end{tabular}	
+%  \end{table}
+%\end{publicacoes}
+
+% ---
+% \renewcommand{\nomname}{\listadesiglasname}
+% \pdfbookmark[0]{\nomname}{las}
+% \renewcommand{\nomname}{\listadesiglasname\bigskip}
+% \hypertarget{abbr}{\printnomenclature[2.5 cm]{}}
+% \cleardoublepage
+
+% ---
+% inserir o sumario
+% ---
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+\citeoption{abnt-repeated-author-omit=yes}
+% Retirar o número das páginas
+\pagestyle{meuestilo}
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+\pagestyle{meuestilo}
+
+\include{capitulos/introducao}
+\include{capitulos/cap2_trabalhos_relacionados}
+\include{capitulos/cap3_fundamentacao}
+% detecção de objetos; estimação de pose; panoramas aumentados; aplicações industriais
+\include{capitulos/cap4_metodologia_proposta}
+% marcador natural; estimação de pose; 
+\include{capitulos/cap5_resultados}
+% estudo de caso 1: RA; estudo de caso 2: RV;
+\include{capitulos/cap6_discussao}
+\include{capitulos/conclusao}
+
+% \include{proposta de marcador_natural}
+% related works - proposta - resultados
+% \include{cap4_estimacao_pose}
+% related works - proposta - resultados
+% \include{cap5_panoramas_aumentados}
+% related works - proposta - resultados
+% \include{conclusao}
+
+\renewcommand{\nomname}{\listadesiglasname\bigskip}
+\postextual
+  
+
+\bibliography{capitulos/referencias}
+
+
+%\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+%\partapendices
+
+%\begin{KeepFromToc} nao necessario
+
+%\chapter*{APÊNDICE A - Termo de Consentimento Livre e Esclarecido}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[scale=0.80]{termo.pdf}
+%\end{figure}
+
+%auto_depo
+
+%\chapter*{APÊNDICE B - Termo de Autorização de Depoimento}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[scale=0.80]{auto_depo.pdf}
+%\end{figure}
+
+%\chapter*{APÊNDICE C - Roteiro de Entrevista}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[scale=0.80]{roteiro.pdf}
+%\end{figure}
+
+%\end{KeepFromToc} nao necessario
+
+%\end{apendicesenv}
+
+%\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+%\partanexos
+
+%\chapter*{ANEXO A - RESOLUÇÃO Nº 64, DE 05 DE DEZEMBRO DE 2014}
+%\begin{figure}[!ht]
+%\centering
+%\includegraphics[scale=0.80]{res64.pdf}
+%\end{figure}
+
+%\includepdf[pages={2-},scale=0.9,pagecommand={}]{res64.pdf}
+% \end{anexosenv}
+
+\end{document}

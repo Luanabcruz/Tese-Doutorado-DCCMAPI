@@ -1,0 +1,55 @@
+\chapter{Introdução}
+%\addcontentsline{toc}{chapter}{\uppercase{INTRODUÇÃO}}
+\label{cap:introducao}
+\phantom{0}
+
+Os rins são um par de órgãos localizados na parte posterior do abdômen e são protegidos pela caixa torácica. Esses órgãos são cercados por uma fina camada de tecido conjuntivo e por uma camada de gordura. Além disso, são responsáveis por filtrar o sangue das artérias renais, retirando o excesso de água, sal e resíduos excretando-os pela urina. São também órgãos que desempenham um papel fundamental no metabolismo da vitamina D, na fabricação de hormônios que estimulam a produção de hemácias e na regulação da pressão arterial~\cite{american_cancer,world_cancer}.
+
+Portanto, os rins são extremamente importantes para o funcionamento do organismo. No entanto, alguns fatores de risco, como tabagismo, obesidade e hipertensão, podem afetar a função renal e levar ao câncer renal. Nesse sentido, mudanças no ácido desoxirribonucleico (\textit{Deoxyribonucleic Acid} - DNA) que ativam oncógenes ou genes supressores de tumor podem fazer com que as células renais percam sua função primária e comecem a se multiplicar rapidamente, causando tumores renais~\cite{american_cancer,uk_cancer,urology_health}.
+
+O câncer de rim (carcinoma de células renais) é um tipo de câncer que surge das células renais e pode crescer lentamente ou de forma mais agressiva. O câncer de rim geralmente cresce como uma única massa, mas outros tumores podem surgir em um ou nos dois rins. Em um estágio mais avançado, as células malignas podem cair na corrente sanguínea e afetar outros órgãos \cite{seyfried2013origin,SHUCH201585}. Este processo é chamado de metástase e afeta mais de 90\% dos casos de câncer renal \cite{american_cancer, ghosn2019ossmar}. O tipo mais prevalente é chamado de carcinoma de células claras ou renais e representa cerca de 60-80\% de todos os cânceres renais~\cite{bray2018global,xu2020checkpoint}.
+
+Entre os tipos de câncer, o câncer renal é considerado o câncer mais letal do trato urinário~\cite{ferlay2015cancer}, e a 16ª causa mais comum de morte por câncer~\cite{world_cancer}. Embora 59\% dos casos ocorram em países mais desenvolvidos, as taxas de sobrevivência são relativamente altas, enquanto em países de baixa renda as taxas de sobrevivência são baixas, pois a detecção de tumores ocorre em estágios mais avançados~\cite{world_cancer}. Além disso, o câncer renal é o 9\textsuperscript{\d o} câncer mais comum em homens e o 14\textsuperscript{\d o} mais comum em mulheres~\cite{znaor2015international,Rossi2018}. De acordo com as últimas pesquisas estatísticas, mais de 400.000 novos casos de câncer renal foram diagnosticados e quase 180.000 mortes relacionadas foram relatadas em 2018~\cite{bray2018global,world_cancer}.
+
+O diagnóstico precoce é fundamental para o tratamento adequado do câncer renal e aumenta as chances de cura. Além disso, o sucesso da radioterapia depende da segmentação precisa do tecido-alvo, pois são fornecidas informações estruturais sobre irregularidades na forma e medidas do tamanho dos tumores renais que podem ser usadas por especialistas para analisar condições clínicas graves~\cite{dallal2017automatic}. Para isso, a tomografia computadorizada (TC) é considerada o padrão ouro entre todas as modalidades de imagem disponíveis para investigação de tumores renais, especialmente em seu estágio inicial \cite{kaur2016survey}. A segmentação de tumores renais a partir de imagens de TC é uma tarefa essencial para o diagnóstico, tratamento e planejamento cirúrgico na urologia \cite{yang2014automatic}. 
+
+Devido à importância clínica em geral, muitos pesquisadores investem no uso de técnicas de processamento de imagens e aprendizado de máquina para desenvolver métodos computacionais que auxiliem especialistas na interpretação de imagens médicas \cite{GWYNNE2012250,diniz2019spinal,da2020kidney}. Essas técnicas computacionais são incorporadas em sistemas de Diagnóstico e de Detecção Auxiliados por Computador (\textit{Computer Aided Diagnosis} - CADx) e (\textit{Computer Aided Detection} - CAD e são aplicadas a vários tipos de imagens médicas para fornecer suporte na análise de doenças \cite{selvanayaki2010cad, padilla2011nmf, eldahshan20145526, ghafoorian20166246}. Esses sistemas contribuem para reduzir a carga de trabalho do especialista e aumentar a  eficiência da análise. Portanto, são úteis no processo de detecção e diagnóstico do câncer renal, por meio da pré-análise das informações fornecidas pelas imagens de TC.
+
+As TCs são bastante usadas em métodos para segmentar os rins e detectar lesões renais, pois fornecem imagens de alta resolução com bons detalhes anatômicos. No entanto, essas imagens podem conter componentes distorcidos devido a artefatos encontrados na imagem, que incluem ruído, formato de anel, dispersão, pseudo-realce, artefatos metálicos, etc~\cite{boas2012ct}. Um dos principais desafios da segmentação do rim na TC é incluir as regiões do campo renal recobertas por estruturas anormais. Em um cenário em que os pacientes são saudáveis ou, por exemplo, com pequenos nódulos, os métodos CAD geralmente são capazes de fornecer uma segmentação confiável, pois o contraste entre as áreas renais e seus limites geralmente é mantido. No entanto, em um cenário mais complexo, os pacientes podem ter doenças que afetam seus rins com anormalidades, assim, a tarefa de segmentação do rim torna-se significativamente mais complexa \cite{BERGERON2013216, candemir2017}. Na segmentação dos tumores renais, um dos principais desafios é delinear com precisão o limite da lesão renal entre os tecidos próximos, devido à presença de intensidade intrínseca na homogeneidade da textura do tecido ou limites que são inerentemente confusos~\cite{agnello2020ct}. Por essas razões, a tarefa de segmentar os rins e tumores renais torna-se significativamente complexa e desafiadora. 
+
+Dessa forma, métodos automáticos e robustos podem ser cruciais para superar essas dificuldades. Portanto, o problema abordado nesta tese consiste em propor um método automático capaz de segmentar com precisão rins e tumores renais em imagens tomográficas.
+
+\section{Objetivo Geral}
+\label{sec:objetivo-geral}
+
+O objetivo geral da tese proposta é desenvolver um método computacional para segmentar automaticamente os rins e tumores renais em TCs de pacientes doentes, usando principalmente os modelos ResUNet e DeepLabv3+ baseados em abordagem 2.5D, agrupamento de tumores renais acordo com os padrões identificados usando aprendizado de máquina e redução de falsos positivos com base em informações contextuais.
+
+\section{Objetivos Específicos}
+\label{sec:objetivos-especificos}
+
+Para alcançar o objetivo geral deste trabalho, faz-se necessário atingir os seguintes objetivos específicos:
+
+\begin{itemize}
+    \item Aplicar a técnica de aumento de dados em tempo real, tornando-a uma ferramenta poderosa para o método, com baixo consumo de recurso de máquina e maior capacidade de generalizar modelos de aprendizado profundo;
+    \item Desenvolver um método automático que visa encontrar padrões de características existentes na base de imagens para organizá-la em grupos, de forma a garantir um modelo de aprendizagem profunda mais equilibrado e generalizado;
+    \item Identificar os filtros mais efetivos para realçar os tumores renais e padronizar os rins;
+    \item Compreender e aplicar as redes neurais convolucionais na tarefa de segmentar os rins e tumores renais em imagens de TC;
+    \item Reconstruir regiões de tumores renais para recuperar tecido de tumores renais e rins não segmentados inicialmente, a fim de aumentar a precisão das segmentações dos rins e tumores renais;
+    \item Validar o método proposto por meio de métricas comumente usadas em trabalhos de imagens médicas. Além disso, aplicar o teste de significância nas etapas do método para verificar se há diferença significativa entre elas;
+    \item Avaliar o método proposto por meio da realização de experimentos, usando uma base de imagens públicas de TC;
+    \item Comparar o método proposto com métodos já consolidados na literatura.
+\end{itemize}
+
+\section{Organização do Trabalho}
+\label{sec:organizacao-do-trabalho}
+
+Os demais capítulos deste trabalho foram organizados em:
+
+\begin{itemize}
+    \item O Capítulo~\ref{cap:trabalhos-relacionados} apresenta um resumo dos trabalhos relacionados à tarefa de segmentação de rins e tumores renais em imagens tomográficas.
+    \item O Capítulo~\ref{cap:fundamentacao-teorica} trata dos conceitos fundamentais necessários para a construção desta pesquisa.
+    \item O Capítulo~\ref{cap:materiais-metodo} descreve todas as etapas do método proposto usado para a segmentação dos rins e tumores renais em imagens de TC.
+    \item O Capítulo~\ref{cap:resultados} mostra e discute os resultados alcançados no método proposto.
+    \item O Capítulo~\ref{cap:discussao} apresenta vários estudos de casos e um estudo comparativo com os trabalhos relacionados. Além disso, discute as vantagens e limitações encontradas no método proposto.
+    \item Finalmente, o Capítulo~\ref{cap:conclusao} apresenta as considerações finais e sugestões de trabalhos futuros.
+\end{itemize}
