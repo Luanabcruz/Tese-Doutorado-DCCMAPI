@@ -1,0 +1,1 @@
+# Agrupador de exames de CT usando Deep Features e K-means
