@@ -1,0 +1,9 @@
+logs/*
+.vscode
+__pycache__
+
+**logs**
+**imagens**
+output_*
+out*
+**picklenumpy**
