@@ -8,8 +8,8 @@ O câncer renal é um problema de saúde pública que afeta milhares de pessoas 
 
 # Arquivos
 
-Repositório da base de imagens: 
+Repositório da base de imagens 
  - https://github.com/neheller/kits19
 
-Link do desafio KiTS10: 
+Link do desafio KiTS10
  - https://kits19.grand-challenge.org/
